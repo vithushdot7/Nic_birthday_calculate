@@ -23,12 +23,29 @@ namespace Nic_birthday_calculate
             string gen;
             string month = "";
             int day = 0;
+            string year = "";
+            string genderValue = "";
+            int gender = 0;
 
-            string year = nicNo.Substring(0, 2);
-            Console.WriteLine("Birth Year : " + "19" + year);
+            //int nicInt = Convert.ToInt32(nicNo);
 
-            string genderValue = nicNo.Substring(2, 3);
-            int gender = Int16.Parse(genderValue);
+            var len = nicNo.Length;
+
+            if (len == 12)
+            {
+                year = nicNo.Substring(0, 4);
+                Console.WriteLine("Birth Year : " + year);
+                genderValue = nicNo.Substring(4, 3);
+                gender = Int16.Parse(genderValue);
+            }
+            else
+            {
+                year = nicNo.Substring(0, 2);
+                Console.WriteLine("Birth Year : " + "19" + year);
+                genderValue = nicNo.Substring(2, 3);
+                gender = Int16.Parse(genderValue);
+            }
+
 
             if (gender < 500)
             {
@@ -39,7 +56,6 @@ namespace Nic_birthday_calculate
                 gen = "Female";
                 gender -= 500;
             }
-
 
             if (gender > 335)
             {
